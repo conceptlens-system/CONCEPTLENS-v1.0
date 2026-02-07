@@ -27,18 +27,11 @@ export default function StudentProfilePage() {
     const [profile, setProfile] = useState<any>({})
     const [formData, setFormData] = useState({
         full_name: "",
-<<<<<<< HEAD
         contact_number: "",
         department: "",
         branch: "",
         institute_name: "",
         linkedin_url: "",
-=======
-        bio: "",
-        phone: "",
-        linkedin_url: "",
-        skills: "", // Comma separated for input
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
         academic_history: ""
     })
 
@@ -64,18 +57,11 @@ export default function StudentProfilePage() {
             setProfile(data)
             setFormData({
                 full_name: data.full_name || "",
-<<<<<<< HEAD
                 contact_number: data.contact_number || data.phone || "",
                 department: data.department || "",
                 branch: data.branch || "",
                 institute_name: data.institute_name || "",
                 linkedin_url: data.linkedin_url || "",
-=======
-                bio: data.bio || "",
-                phone: data.phone || "",
-                linkedin_url: data.linkedin_url || "",
-                skills: data.skills ? data.skills.join(", ") : "",
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
                 academic_history: data.academic_history || ""
             })
         } catch (e) {
@@ -89,16 +75,10 @@ export default function StudentProfilePage() {
     const handleJoin = async () => {
         // Mandatory Profile Check
         const missingFields = []
-<<<<<<< HEAD
         if (!profile.contact_number) missingFields.push("Contact Number")
         if (!profile.department) missingFields.push("Department")
         if (!profile.branch) missingFields.push("Branch")
         if (!profile.institute_name) missingFields.push("Institute Name")
-=======
-        if (!profile.bio) missingFields.push("Bio")
-        if (!profile.phone) missingFields.push("Phone")
-        if (!profile.skills || profile.skills.length === 0) missingFields.push("Skills")
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
         if (!profile.academic_history) missingFields.push("Academic History")
 
         if (missingFields.length > 0) {
@@ -127,7 +107,6 @@ export default function StudentProfilePage() {
         const token = (session?.user as any)?.accessToken
 
         try {
-<<<<<<< HEAD
             if (!/^\d{10}$/.test(formData.contact_number)) {
                 toast.error("Contact number must be exactly 10 digits")
                 return
@@ -135,11 +114,6 @@ export default function StudentProfilePage() {
 
             const payload = {
                 ...formData
-=======
-            const payload = {
-                ...formData,
-                skills: formData.skills.split(",").map(s => s.trim()).filter(Boolean)
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
             }
 
             setSaving(true)
@@ -201,7 +175,6 @@ export default function StudentProfilePage() {
                                 />
                             </div>
 
-<<<<<<< HEAD
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="space-y-2">
                                     <Label>Contact Number</Label>
@@ -254,53 +227,6 @@ export default function StudentProfilePage() {
                                     onChange={(e) => setFormData({ ...formData, linkedin_url: e.target.value })}
                                     disabled={!isEditing}
                                 />
-=======
-                            <div className="space-y-2">
-                                <Label>Bio / About Me</Label>
-                                <Textarea
-                                    className="min-h-[100px]"
-                                    placeholder="Tell us about yourself..."
-                                    value={formData.bio}
-                                    onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
-                                    disabled={!isEditing}
-                                />
-                            </div>
-
-                            <div className="space-y-2">
-                                <Label>Skills (Comma separated)</Label>
-                                <Input
-                                    placeholder="Python, React, Data Structures..."
-                                    value={formData.skills}
-                                    onChange={(e) => setFormData({ ...formData, skills: e.target.value })}
-                                    disabled={!isEditing}
-                                />
-                                {!isEditing && profile?.skills && profile.skills.length > 0 && (
-                                    <div className="flex flex-wrap gap-2 mt-2">
-                                        {profile.skills.map((s: string) => (
-                                            <Badge key={s} variant="secondary">{s}</Badge>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div className="space-y-2">
-                                    <Label>Phone Number</Label>
-                                    <Input
-                                        value={formData.phone}
-                                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                        disabled={!isEditing}
-                                    />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label>LinkedIn URL</Label>
-                                    <Input
-                                        value={formData.linkedin_url}
-                                        onChange={(e) => setFormData({ ...formData, linkedin_url: e.target.value })}
-                                        disabled={!isEditing}
-                                    />
-                                </div>
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
                             </div>
 
                             <div className="space-y-2">

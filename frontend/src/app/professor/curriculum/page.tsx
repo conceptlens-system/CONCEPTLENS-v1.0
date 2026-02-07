@@ -223,8 +223,8 @@ export default function CurriculumPage() {
                                     {editingSubject?.id === subject._id ? (
                                         <div className="flex items-center gap-1 w-full">
                                             <Input
-                                                value={editingSubject.name}
-                                                onChange={e => setEditingSubject({ id: editingSubject.id, name: e.target.value })}
+                                                value={editingSubject!.name}
+                                                onChange={e => setEditingSubject({ id: editingSubject!.id, name: e.target.value })}
                                                 className="h-8"
                                                 autoFocus
                                             />

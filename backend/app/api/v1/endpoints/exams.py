@@ -5,10 +5,7 @@ from app.models.exams import Exam, ExamCreate
 from app.core.security import get_current_user
 from bson import ObjectId
 from datetime import datetime, timezone
-<<<<<<< HEAD
 from app.models.notifications import Notification
-=======
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
 
 router = APIRouter()
 
@@ -199,7 +196,6 @@ async def validate_exam(exam_id: str, is_validated: bool = Body(..., embed=True)
     updated = await db.exams.find_one({"_id": obj_id})
     updated["_id"] = str(updated["_id"])
     ensure_utc(updated)
-<<<<<<< HEAD
     ensure_utc(updated)
     return updated
 
@@ -249,9 +245,6 @@ async def publish_exam_results(exam_id: str, current_user: dict = Depends(get_cu
     
     if notifications:
         await db.notifications.insert_many(notifications)
-
-=======
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
     return updated
 
 @router.get("/{exam_id}/students", response_model=List[dict])
@@ -292,7 +285,6 @@ async def get_exam_students(exam_id: str, current_user: dict = Depends(get_curre
         })
         
     return students_list
-<<<<<<< HEAD
 
 @router.get("/{exam_id}/students_scores", response_model=List[dict])
 async def get_exam_students_scores(exam_id: str, current_user: dict = Depends(get_current_user)):
@@ -418,5 +410,3 @@ async def get_my_result(exam_id: str, current_user: dict = Depends(get_current_u
         "responses_count": len(responses),
         "questions": detailed_questions
     }
-=======
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5

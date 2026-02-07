@@ -249,12 +249,9 @@ export default function ExamsPage() {
                                                 {exam.is_validated ? "Unpublish" : "Publish"}
                                             </Button>
                                             <Button variant="outline" size="sm" asChild>
-<<<<<<< HEAD
                                                 <Link href={`/professor/exams/${exam._id}/results`}>Results</Link>
                                             </Button>
                                             <Button variant="outline" size="sm" asChild>
-=======
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
                                                 <Link href={`/professor/exams/${exam._id}`}>Edit</Link>
                                             </Button>
                                             <Button variant="ghost" size="icon" className="h-8 w-8 text-red-500 hover:text-red-600 hover:bg-red-50" onClick={() => handleDeleteExam(exam._id, exam.title)}>

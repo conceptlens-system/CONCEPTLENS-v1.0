@@ -93,7 +93,6 @@ export default function StudentHomePage() {
                                 <CardHeader className="pb-2">
                                     <div className="flex justify-between items-start">
                                         <CardTitle className="text-lg">{exam.title}</CardTitle>
-<<<<<<< HEAD
                                         {exam.attempted ? (
                                             <Badge variant="secondary" className="bg-green-100 text-green-700 hover:bg-green-200 border-transparent">
                                                 Completed
@@ -103,11 +102,6 @@ export default function StudentHomePage() {
                                                 {new Date(exam.schedule_start) > new Date() ? "Upcoming" : "Available"}
                                             </Badge>
                                         )}
-=======
-                                        <Badge variant={new Date(exam.schedule_start) > new Date() ? "outline" : "default"}>
-                                            {new Date(exam.schedule_start) > new Date() ? "Upcoming" : "Available"}
-                                        </Badge>
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
                                     </div>
                                     <CardDescription>
                                         ID: {exam._id.slice(-6)}
@@ -124,13 +118,8 @@ export default function StudentHomePage() {
                                             <span>{exam.duration_minutes} mins</span>
                                         </div>
                                     </div>
-<<<<<<< HEAD
                                     <Button asChild size="sm" className="w-full" variant={exam.attempted ? "outline" : "default"}>
                                         <Link href={`/student/exams`}>{exam.attempted ? "View Results" : "View in My Exams"}</Link>
-=======
-                                    <Button asChild size="sm" className="w-full">
-                                        <Link href={`/student/exams`}>View in My Exams</Link>
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
                                     </Button>
                                 </CardContent>
                             </Card>

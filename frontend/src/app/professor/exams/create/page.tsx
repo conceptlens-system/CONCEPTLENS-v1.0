@@ -6,18 +6,14 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { toast } from "sonner"
 import { fetchSubjects, createExam, fetchClasses } from "@/lib/api"
 import { Plus, Trash2, Users, Upload, Copy, HelpCircle } from "lucide-react"
 import { useSession } from "next-auth/react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { DateTimePicker } from "@/components/ui/date-time-picker"
-<<<<<<< HEAD
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-=======
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
 
 const formatExample = `*** COPY THIS PROMPT TO AI ***
 You are an Exam Question Generator. Generate questions in this EXACT format:
@@ -28,9 +24,6 @@ B: [Option B]
 C: [Option C]
 D: [Option D]
 Correct: [Correct Option Letter or Answer Text]
-<<<<<<< HEAD
-Type: [mcq | short_answer | true_false | one_word]`
-=======
 Type: [mcq | short_answer | true_false | one_word]
 
 --- EXAMPLES ---
@@ -54,9 +47,8 @@ Type: one_word
 Q: Explain the concept of inertia.
 Correct: Objects in motion stay in motion unless acted upon by a force.
 Type: short_answer`
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
 
-export default function CreateExamPage() {
+function CreateExamContent() {
     const { data: session } = useSession()
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -294,6 +286,7 @@ export default function CreateExamPage() {
         if (!title || !selectedSubject || !startTime || !accessEndTime) {
             toast.error("Please fill all required fields")
             return
+
         }
 
         if (selectedClasses.length === 0) {
@@ -496,7 +489,6 @@ export default function CreateExamPage() {
                         <p className="text-sm text-slate-500">Manage your exam questions</p>
                     </div>
                     <div className="flex gap-2">
-<<<<<<< HEAD
                         <Dialog>
                             <DialogTrigger asChild>
                                 <Button variant="outline" size="sm" className="gap-2">
@@ -512,34 +504,14 @@ export default function CreateExamPage() {
                                 </DialogHeader>
                                 <div className="space-y-4">
                                     <div className="bg-slate-950 text-slate-50 p-4 rounded-md text-xs font-mono whitespace-pre-wrap max-h-[60vh] overflow-y-auto">
-=======
-                        <Popover>
-                            <PopoverTrigger asChild>
-                                <Button variant="outline" size="sm" className="gap-2">
-                                    <HelpCircle className="w-4 h-4" /> Format Guide
-                                </Button>
-                            </PopoverTrigger>
-                            <PopoverContent className="w-80 p-0" align="end">
-                                <div className="p-4 bg-slate-50 border-b">
-                                    <h4 className="font-semibold">Bulk Upload Format</h4>
-                                    <p className="text-xs text-slate-500">You can generate questions using this format with AI (ChatGPT, Claude, etc).</p>
-                                </div>
-                                <div className="p-4 space-y-4">
-                                    <div className="bg-slate-950 text-slate-50 p-3 rounded-md text-xs font-mono whitespace-pre-wrap">
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
                                         {formatExample}
                                     </div>
                                     <Button size="sm" className="w-full gap-2" onClick={copyToClipboard}>
                                         <Copy className="w-3 h-3" /> Copy Format to Clipboard
                                     </Button>
                                 </div>
-<<<<<<< HEAD
                             </DialogContent>
                         </Dialog>
-=======
-                            </PopoverContent>
-                        </Popover>
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
 
                         <div className="relative">
                             <input
@@ -682,5 +654,13 @@ export default function CreateExamPage() {
                 </Button>
             </div>
         </div>
+    )
+}
+
+export default function CreateExamPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <CreateExamContent />
+        </Suspense>
     )
 }

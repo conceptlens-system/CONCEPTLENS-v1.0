@@ -240,7 +240,6 @@ export async function validateExam(id: string, isValidated: boolean, token: stri
     return res.json();
 }
 
-<<<<<<< HEAD
 export async function publishResults(examId: string, token: string) {
     const res = await fetch(`${API_URL}/exams/${examId}/publish`, {
         method: "POST",
@@ -258,9 +257,6 @@ export async function fetchExamStudentsScores(id: string, token: string) {
     if (!res.ok) throw new Error("Failed to fetch student scores");
     return res.json();
 }
-
-=======
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
 // --- Class Management ---
 
 export async function fetchClasses(token: string) {
@@ -375,7 +371,6 @@ export async function fetchClassStudents(classId: string, token: string) {
     return res.json();
 }
 
-<<<<<<< HEAD
 export async function removeStudentFromClass(classId: string, studentId: string, token: string) {
     const res = await fetch(`${API_URL}/classes/${classId}/students/${studentId}`, {
         method: "DELETE",
@@ -414,9 +409,6 @@ export async function fetchMyResult(examId: string, token: string) {
     if (!res.ok) throw new Error("Failed to fetch result");
     return res.json();
 }
-
-=======
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
 // --- Notifications ---
 export async function fetchNotifications(token: string) {
     const res = await fetch(`${API_URL}/notifications/`, {

@@ -3,18 +3,13 @@
 import { useEffect, useState } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { useSession } from "next-auth/react"
-<<<<<<< HEAD
 import { fetchClass, fetchClassStudents, fetchClassRequests, approveClassRequest, rejectClassRequest, fetchExams, updateClass, fetchSubjects, deleteClass, createAnnouncement, fetchAnnouncements, removeStudentFromClass } from "@/lib/api"
 import { formatDateLocal } from "@/lib/utils"
-=======
-import { fetchClass, fetchClassStudents, fetchClassRequests, approveClassRequest, rejectClassRequest, fetchExams, updateClass, fetchSubjects, deleteClass } from "@/lib/api"
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-<<<<<<< HEAD
 import { Loader2, UserPlus, FileText, Check, X, Copy, Settings, Trash2, Pencil, Megaphone, Send, UserMinus } from "lucide-react"
 import { toast } from "sonner"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
@@ -25,15 +20,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea"
 import { UserProfileDialog } from "@/components/UserProfileDialog"
 import { format } from "date-fns"
-=======
-import { Loader2, UserPlus, FileText, Check, X, Copy, Settings, Trash2, Pencil } from "lucide-react"
-import { toast } from "sonner"
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { UserProfileDialog } from "@/components/UserProfileDialog"
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
 
 export default function ClassDetailsPage() {
     const params = useParams()
@@ -48,26 +34,18 @@ export default function ClassDetailsPage() {
     const [requests, setRequests] = useState<any[]>([])
     const [exams, setExams] = useState<any[]>([])
     const [subjects, setSubjects] = useState<any[]>([])
-<<<<<<< HEAD
     const [announcements, setAnnouncements] = useState<any[]>([])
-=======
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
     const [loading, setLoading] = useState(true)
 
     const [editOpen, setEditOpen] = useState(false)
     const [editData, setEditData] = useState({ name: "", subject_id: "" })
 
-<<<<<<< HEAD
     const [announcementOpen, setAnnouncementOpen] = useState(false)
     const [newAnnouncement, setNewAnnouncement] = useState({ title: "", content: "" })
 
     const [profileOpen, setProfileOpen] = useState(false)
     const [selectedStudentId, setSelectedStudentId] = useState<string | null>(null)
     const [studentRemovalId, setStudentRemovalId] = useState<string | null>(null)
-=======
-    const [profileOpen, setProfileOpen] = useState(false)
-    const [selectedStudentId, setSelectedStudentId] = useState<string | null>(null)
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
     const [confirmName, setConfirmName] = useState("")
 
     useEffect(() => {
@@ -106,15 +84,12 @@ export default function ClassDetailsPage() {
             const allSubjects = await fetchSubjects(token)
             setSubjects(allSubjects)
 
-<<<<<<< HEAD
             // Load Announcements
             try {
                 const ann = await fetchAnnouncements(classId, token)
                 setAnnouncements(ann)
             } catch (ignore) { console.warn("Failed to load announcements") }
 
-=======
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
         } catch (error) {
             console.error("Failed to load class data", error)
             toast.error("Failed to load class details")
@@ -147,7 +122,6 @@ export default function ClassDetailsPage() {
         }
     }
 
-<<<<<<< HEAD
     const handleRemoveStudent = (studentId: string) => {
         setStudentRemovalId(studentId)
     }
@@ -166,8 +140,6 @@ export default function ClassDetailsPage() {
         }
     }
 
-=======
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
     const copyCode = () => {
         if (classData) {
             navigator.clipboard.writeText(classData.class_code)
@@ -206,7 +178,6 @@ export default function ClassDetailsPage() {
         setProfileOpen(true)
     }
 
-<<<<<<< HEAD
     const handleCreateAnnouncement = async () => {
         if (!newAnnouncement.title || !newAnnouncement.content) {
             toast.error("Please fill all fields")
@@ -229,8 +200,6 @@ export default function ClassDetailsPage() {
         }
     }
 
-=======
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
     if (loading) return <div className="flex h-96 items-center justify-center"><Loader2 className="animate-spin" /></div>
     if (!classData) return <div>Class not found</div>
 
@@ -297,14 +266,9 @@ export default function ClassDetailsPage() {
             </div>
 
             <Tabs defaultValue="students" className="w-full">
-<<<<<<< HEAD
                 <TabsList className="grid w-full grid-cols-4 max-w-[500px]">
                     <TabsTrigger value="students">Students</TabsTrigger>
                     <TabsTrigger value="announcements">Announcements</TabsTrigger>
-=======
-                <TabsList className="grid w-full grid-cols-3 max-w-[400px]">
-                    <TabsTrigger value="students">Students</TabsTrigger>
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
                     <TabsTrigger value="exams">Exams</TabsTrigger>
                     <TabsTrigger value="settings">Settings</TabsTrigger>
                 </TabsList>
@@ -365,7 +329,6 @@ export default function ClassDetailsPage() {
                                                     <div className="text-sm text-slate-500">{student.email}</div>
                                                 </div>
                                             </div>
-<<<<<<< HEAD
                                             <div className="flex items-center gap-2 opactiy-0 group-hover:opacity-100 transition-opacity">
                                                 <Button variant="ghost" size="icon" className="text-red-500 hover:text-red-600 hover:bg-red-50" title="Remove Student" onClick={() => handleRemoveStudent(student.id || student._id)}>
                                                     <UserMinus className="h-4 w-4" />
@@ -374,11 +337,6 @@ export default function ClassDetailsPage() {
                                                     View Profile
                                                 </Button>
                                             </div>
-=======
-                                            <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 text-blue-600 hover:text-blue-700 hover:bg-blue-50" onClick={() => handleViewProfile(student)}>
-                                                View Profile
-                                            </Button>
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
                                         </div>
                                     ))}
                                 </div>
@@ -387,7 +345,6 @@ export default function ClassDetailsPage() {
                     </Card>
                 </TabsContent>
 
-<<<<<<< HEAD
                 <TabsContent value="announcements" className="mt-6 space-y-6">
                     <div className="flex justify-between items-center bg-blue-50/50 p-6 rounded-lg border border-blue-100">
                         <div>
@@ -459,8 +416,6 @@ export default function ClassDetailsPage() {
                     </div>
                 </TabsContent>
 
-=======
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
                 <TabsContent value="exams" className="mt-6">
                     <div className="flex justify-end mb-4">
                         <Button onClick={() => router.push(`/professor/exams/create?classId=${classId}`)}>
@@ -564,7 +519,6 @@ export default function ClassDetailsPage() {
                     </Card>
                 </TabsContent>
             </Tabs>
-<<<<<<< HEAD
 
 
             <AlertDialog open={!!studentRemovalId} onOpenChange={(open) => !open && setStudentRemovalId(null)}>
@@ -583,8 +537,6 @@ export default function ClassDetailsPage() {
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
-=======
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
         </div>
     )
 }

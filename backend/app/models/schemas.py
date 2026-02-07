@@ -67,17 +67,14 @@ class UserBase(BaseModel):
     role: str = "student" 
 
     # Profile Fields (Optional)
-<<<<<<< HEAD
     contact_number: Optional[str] = None
     department: Optional[str] = None
     branch: Optional[str] = None
     institute_name: Optional[str] = None # Text field as requested
     
-=======
     bio: Optional[str] = None
     phone: Optional[str] = None
     skills: List[str] = []
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
     research_interests: List[str] = [] # For Professors
     office_hours: Optional[str] = None # For Professors
     linkedin_url: Optional[str] = None
@@ -99,7 +96,6 @@ class ChangePasswordRequest(BaseModel):
     current_password: str
     new_password: str
 
-<<<<<<< HEAD
 class UserUpdate(BaseModel):
     full_name: Optional[str] = None
     contact_number: Optional[str] = None
@@ -111,9 +107,6 @@ class UserUpdate(BaseModel):
     research_interests: Optional[List[str]] = None
     office_hours: Optional[str] = None
     profile_picture: Optional[str] = None
-
-=======
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
 class User(UserBase):
     id: Optional[PyObjectId] = Field(alias="_id", default=None)
 
@@ -164,7 +157,6 @@ class DetectedMisconception(BaseModel):
     student_count: int
     confidence_score: float
     example_ids: List[str]
-<<<<<<< HEAD
     status: str = "pending"
     
     # Enriched Fields (Optional)
@@ -172,10 +164,7 @@ class DetectedMisconception(BaseModel):
     options: Optional[List[Any]] = None 
     reasoning: Optional[str] = None
     concept_chain: Optional[List[str]] = None
-    evidence: Optional[List[str]] = None 
-=======
-    status: str = "pending" 
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
+    evidence: Optional[List[str]] = None
 
     class Config:
         populate_by_name = True
@@ -242,7 +231,6 @@ class TeacherValidation(BaseModel):
     misconception_id: str
     status: str 
     teacher_notes: Optional[str] = None
-<<<<<<< HEAD
 
 # --- Announcement Models ---
 class Announcement(BaseModel):
@@ -261,5 +249,3 @@ class Announcement(BaseModel):
 class AnnouncementCreate(BaseModel):
     title: str
     content: str
-=======
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5

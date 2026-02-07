@@ -28,16 +28,12 @@ export function MobileNav() {
         )
     }
 
-<<<<<<< HEAD
     const studentLinks = [
         { href: "/student", label: "Home" },
         { href: "/student/classes", label: "My Classes" },
         { href: "/student/exams", label: "My Exams" },
         { href: "/student/profile", label: "Profile" },
     ]
-
-=======
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
     return (
         <div className="md:hidden border-b bg-white p-4 flex items-center justify-between sticky top-0 z-50">
             <div className="flex items-center gap-2 font-bold text-lg">

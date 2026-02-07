@@ -67,13 +67,9 @@ export function Sidebar({ className, onLinkClick }: SidebarProps) {
 
     const studentLinks = [
         { href: "/student", label: "Home", icon: Activity },
-<<<<<<< HEAD
         { href: "/student/classes", label: "My Classes", icon: BookOpen },
         { href: "/student/exams", label: "My Exams", icon: ClipboardList },
         { href: "/student/inbox", label: "Inbox", icon: Mail, badge: unreadCount },
-=======
-        { href: "/student/exams", label: "My Exams", icon: ClipboardList },
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
         { href: "/student/profile", label: "Profile", icon: Users },
     ]
 
@@ -97,11 +93,7 @@ export function Sidebar({ className, onLinkClick }: SidebarProps) {
                         )}
                         asChild
                         onClick={() => {
-<<<<<<< HEAD
                             if (link.href === "/professor/inbox" || link.href === "/student/inbox") setUnreadCount(0);
-=======
-                            if (link.href === "/professor/inbox") setUnreadCount(0);
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
                             onLinkClick?.();
                         }}
                     >
