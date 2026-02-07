@@ -4,7 +4,6 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
-<<<<<<< HEAD
 
 export function formatDateLocal(isoString: string) {
   if (!isoString) return "--"
@@ -31,5 +30,4 @@ export function formatDateLocal(isoString: string) {
     return isoString
   }
 }
-=======
->>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
+
