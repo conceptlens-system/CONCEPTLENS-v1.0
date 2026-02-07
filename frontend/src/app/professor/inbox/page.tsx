@@ -1,7 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react"
+<<<<<<< HEAD
 import { formatDateLocal } from "@/lib/utils"
+=======
+>>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { fetchNotifications, markNotificationRead, markAllNotificationsRead } from "@/lib/api"
@@ -126,7 +129,11 @@ export default function InboxPage() {
                                         {n.title}
                                     </h4>
                                     <p className="text-sm text-slate-500 line-clamp-1">{n.message}</p>
+<<<<<<< HEAD
                                     <p className="text-xs text-slate-400 mt-1">{formatDateLocal(n.created_at)}</p>
+=======
+                                    <p className="text-xs text-slate-400 mt-1">{new Date(n.created_at).toLocaleString()}</p>
+>>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
                                 </div>
                                 {!n.is_read && (
                                     <Badge variant="secondary" className="bg-blue-100 text-blue-700 hover:bg-blue-100">New</Badge>

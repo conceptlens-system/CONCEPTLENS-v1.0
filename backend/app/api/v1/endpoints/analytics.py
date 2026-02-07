@@ -191,6 +191,7 @@ async def get_misconception_detail(id: str):
     if not misconception:
         raise HTTPException(status_code=404, detail="Misconception not found")
     
+<<<<<<< HEAD
     # --- Enrichment Logic (Defensive) ---
     try:
         misconception["_id"] = str(misconception["_id"])
@@ -268,6 +269,9 @@ async def get_misconception_detail(id: str):
     if "question_id" in misconception:
         misconception["question_id"] = str(misconception["question_id"])
 
+=======
+    misconception["_id"] = str(misconception["_id"])
+>>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
     return misconception
 
 from pydantic import BaseModel

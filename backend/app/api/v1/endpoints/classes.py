@@ -1,8 +1,12 @@
 from fastapi import APIRouter, HTTPException, Depends, Body
 from typing import List
 from app.db.mongodb import get_database
+<<<<<<< HEAD
 from app.models.schemas import Class, ClassCreate, ClassJoinRequest, Announcement, AnnouncementCreate
 from app.models.notifications import Notification
+=======
+from app.models.schemas import Class, ClassCreate, ClassJoinRequest
+>>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
 from app.core.security import get_current_user
 from bson import ObjectId
 import secrets
@@ -171,7 +175,11 @@ async def approve_join(class_id: str, request_id: str, current_user: dict = Depe
             "type": "STATUS_UPDATE",
             "title": "Class Request Approved",
             "message": f"Your request to join {c['name']} has been approved.",
+<<<<<<< HEAD
             "link": f"/student/classes/{class_id}",
+=======
+            "link": f"/student/classes", # Or similar
+>>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
             "is_read": False,
             "created_at": datetime.now(timezone.utc)
         })
@@ -268,6 +276,7 @@ async def get_class_students(class_id: str, current_user: dict = Depends(get_cur
         
     return results
 
+<<<<<<< HEAD
 @router.delete("/{class_id}/students/{student_id}")
 async def remove_student(class_id: str, student_id: str, current_user: dict = Depends(get_current_user)):
     db = await get_database()
@@ -307,6 +316,8 @@ async def remove_student(class_id: str, student_id: str, current_user: dict = De
 
     return {"message": "Student removed successfully"}
 
+=======
+>>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
 @router.delete("/{class_id}")
 async def delete_class(class_id: str, current_user: dict = Depends(get_current_user)):
     db = await get_database()
@@ -330,6 +341,7 @@ async def delete_class(class_id: str, current_user: dict = Depends(get_current_u
     await db.class_students.delete_many({"class_id": class_id})
     await db.class_join_requests.delete_many({"class_id": class_id})
     
+<<<<<<< HEAD
     
     return {"message": "Class deleted successfully"}
 
@@ -419,3 +431,6 @@ async def list_announcements(class_id: str, current_user: dict = Depends(get_cur
         a["_id"] = str(a["_id"])
         
     return announcements
+=======
+    return {"message": "Class deleted successfully"}
+>>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5

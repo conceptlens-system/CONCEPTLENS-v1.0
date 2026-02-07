@@ -11,6 +11,7 @@ app = FastAPI(
     redoc_url="/redoc",
 )
 
+<<<<<<< HEAD
 from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi.responses import JSONResponse
 
@@ -37,6 +38,19 @@ class ForceCORSMiddleware(BaseHTTPMiddleware):
         return response
 
 app.add_middleware(ForceCORSMiddleware)
+=======
+# CORS Setup
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+>>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
 
 @app.on_event("startup")
 async def startup_db_client():

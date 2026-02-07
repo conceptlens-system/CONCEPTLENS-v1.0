@@ -35,7 +35,10 @@ class Exam(BaseModel):
     class_ids: List[str] = [] # List of Class IDs
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     is_validated: bool = False # Teacher must approve
+<<<<<<< HEAD
     results_published: bool = False # Teacher must publish for students to see marks
+=======
+>>>>>>> 560835bf8c03cc6eab3c8b2a591f6e0c2a289bb5
     attempted: Optional[bool] = False # Dynamic field for student view
 
 class SubjectCreate(BaseModel):
